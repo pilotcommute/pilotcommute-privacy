@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PilotCommute Privacy Policy</title>
+<style>
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; line-height: 1.5; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; color: #111; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+th { background: #f4f4f4; }
+hr { border: none; border-top: 1px solid #ddd; margin: 1.5rem 0; }
+code { font-size: 0.95em; }
+</style>
+</head>
+<body>
+<h1>PilotCommute Privacy Policy — v1.0</h1>
+<p><strong>Effective date:</strong> October 28, 2026<br>
+<strong>Operator:</strong> Tyler W (individual)<br>
+<strong>Contact:</strong> pilotcommute-bugs@mail.grokbot.com  </p>
+<p>This policy describes how PilotCommute (“the app,” “we”) handles information when you use the iOS app. PilotCommute is a <strong>planning tool</strong> for airline pilots who commute to base. It is <strong>not affiliated</strong> with any airline or union.</p>
+<hr>
+<h2>1. Summary</h2>
+<ul>
+<li>Your settings, trips, pasted schedule text, calendar-derived legs, hotel rewards numbers (if you save them), and alarms are stored <strong>on your iPhone</strong>.</li>
+<li>We do <strong>not</strong> run a PilotCommute account that keeps a copy of your schedule on our servers.</li>
+<li>To suggest commute flights and show flight status, the app sends <strong>flight numbers</strong> (or flight idents), <strong>airport codes</strong>, and <strong>dates</strong> (schedule time window) to <strong>FlightAware</strong> through PilotCommute’s <strong>Cloudflare</strong> relay. Your pasted schedule text and other trip details are <strong>not</strong> sent for that purpose.</li>
+<li>To show airport weather, the app sends <strong>airport codes</strong> to the <strong>NOAA Aviation Weather Center</strong> (<code>aviationweather.gov</code>).</li>
+<li>Bug reports leave your device only if <strong>you</strong> open Mail and tap <strong>Send</strong>. We delete bug-report email within <strong>90 days</strong>.</li>
+<li>We do <strong>not</strong> sell your personal information. We do <strong>not</strong> use your data for cross-app tracking.</li>
+</ul>
+<hr>
+<h2>2. Information kept on your iPhone</h2>
+<p>The app may store locally:</p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Airline profile and settings (offsets, preferred airlines, home/base airports)</td>
+<td>On-device only unless you opt into expanded bug details</td>
+</tr>
+<tr>
+<td>Trips and flight legs you import, paste, or confirm</td>
+<td>Derived fields only</td>
+</tr>
+<tr>
+<td>Alarm identifiers and times (AlarmKit / notifications)</td>
+<td>Scheduled through Apple APIs</td>
+</tr>
+<tr>
+<td>First-launch disclaimer acceptance (version + time)</td>
+<td>Required before use</td>
+</tr>
+<tr>
+<td>Hands-free opt-in acknowledgements (if you turn hands-free on)</td>
+<td>Opt-in; acknowledgements unticked by default</td>
+</tr>
+<tr>
+<td><strong>Hotel rewards numbers</strong> (Hilton Honors, Marriott Bonvoy, World of Hyatt), if you enter them</td>
+<td>Stored in the app’s storage on your iPhone. <strong>Not</strong> stored in the Keychain. <strong>Never</strong> sent over the network, written to logs, or included in bug reports. Shown on layover cards / landing notices when that feature is enabled. The lock screen shows only the last four digits. Wiped by Reset / Clear schedule / Delete my data / deleting the app.</td>
+</tr>
+<tr>
+<td>Optional “Keep hotel and van details” lines</td>
+<td>On-device only if you opt in; not sent</td>
+</tr>
+<tr>
+<td>Recent on-device error/run buffer (redacted)</td>
+<td>Used only if you choose to send a bug report</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pasted schedule text</strong> is read on your iPhone for parsing. The text you paste is not sent to PilotCommute servers or to FlightAware/NOAA as paste text. Airport codes, flight numbers, and dates <strong>derived</strong> from it may be used for weather and flight lookups (see §3).</p>
+<p><strong>Calendar:</strong> If you allow calendar access, PilotCommute reads the <strong>one</strong> calendar you pick (EventKit, read-only). It looks through event notes <strong>on your iPhone</strong> to find flights and report times and <strong>keeps only those</strong>. Other details (crew names, hotels, phone numbers) aren’t saved, shown, or sent.</p>
+<p>Under Apple’s App Privacy definition, on-device-only processing is not “collected” for the App Store nutrition label (https://developer.apple.com/app-store/app-privacy-details/, accessed 2026-10-27). This policy still describes it for transparency.</p>
+<hr>
+<h2>3. Information that leaves your iPhone</h2>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+<th>Who receives it</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suggest commute flights / flight status</td>
+<td>Flight number or ident; origin and destination <strong>airport codes</strong>; <strong>date/time window</strong> for schedules; plus a random install ID and app token to the relay (rate limits only)</td>
+<td><strong>Cloudflare</strong> (Worker infrastructure for PilotCommute’s relay) → <strong>FlightAware</strong> (AeroAPI)</td>
+<td>App functionality</td>
+</tr>
+<tr>
+<td>Airport weather</td>
+<td><strong>Airport codes</strong> (ICAO) only</td>
+<td><strong>NOAA</strong> / aviationweather.gov</td>
+<td>Show raw METAR/TAF for awareness</td>
+</tr>
+<tr>
+<td>You send a bug report</td>
+<td>Your <strong>email address</strong> (Mail app) and the content you send: message, app build, iOS version, iPhone model, error logs; and <strong>only if you tick</strong> “Include trip details”, also time zone, settings, and trips/flights/alarm times for your next trips</td>
+<td>PilotCommute at <strong>pilotcommute-bugs@mail.grokbot.com</strong>, an email inbox provided by Grok Bot on <strong>mail.grokbot.com</strong></td>
+<td>Fix bugs only</td>
+</tr>
+<tr>
+<td>You tap an Apple Maps estimate (if that feature ships)</td>
+<td>Home/airport coordinates you ask to send</td>
+<td><strong>Apple</strong></td>
+<td>One-time travel-time estimate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not sent in normal use:</strong> airline passwords or portal credentials; raw pasted schedule text; calendar note text beyond derived legs/report time; hotel rewards numbers; CASS/KCM data; employee ID.</p>
+<p><strong>FlightAware path (code-checked 2026-10-27):</strong> the Cloudflare relay allow-lists only <code>GET /schedules/{start}/{end}?origin&amp;destination…</code> and <code>GET /flights/{ident}</code> (<code>relay/src/index.ts</code>). That matches sending <strong>dates</strong>, <strong>airport codes</strong>, and <strong>flight numbers/idents</strong>. The FlightAware API key stays on the Worker, not on public devices.</p>
+<p>Weather label shown in-app: <em>Source: NOAA Aviation Weather Center (aviationweather.gov). For general awareness only. Not an official weather briefing. Use official sources for flight planning.</em></p>
+<hr>
+<h2>4. How we use information</h2>
+<ul>
+<li>Provide planning features (wake/leave times you configure, commute suggestions, alarms the app <strong>tries to set</strong>)</li>
+<li>Call FlightAware (via Cloudflare) and NOAA for the functions above</li>
+<li>Fix bugs when you email a report</li>
+<li>Comply with law if required</li>
+</ul>
+<p>We do <strong>not</strong> sell personal information. We do <strong>not</strong> “share” personal information for cross-context behavioral advertising as those terms are commonly used under the CCPA/CPRA.</p>
+<hr>
+<h2>5. Retention and deletion</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Retention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On your iPhone</td>
+<td>Until you use in-app delete/reset, clear schedule, or delete the app</td>
+</tr>
+<tr>
+<td>Bug-report email</td>
+<td>Used only to fix bugs; not shared outside the PilotCommute team; <strong>deleted within 90 days</strong> of receipt (Tyler W decision, 2026-10-27). Someone on the team must actually delete them.</td>
+</tr>
+<tr>
+<td>Relay rate-limit counters</td>
+<td>Hashed install ID counts only; wiped when the UTC day rolls over (relay design)</td>
+</tr>
+<tr>
+<td>FlightAware / NOAA</td>
+<td>Subject to those providers’ systems and terms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your choices:</strong> deny calendar/notification/alarm permissions; skip flight/weather features; leave “Include trip details” off (default); delete data in-app or delete the app.</p>
+<p>There are <strong>no user accounts</strong> in the current public design, so Apple’s in-app account-deletion rule (Guideline 5.1.1(v)) does not apply until accounts exist. On-device delete must still work.</p>
+<hr>
+<h2>6. Third parties</h2>
+<table>
+<thead>
+<tr>
+<th>Party</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FlightAware</strong> (AeroAPI)</td>
+<td>Flight status and schedule lookups</td>
+</tr>
+<tr>
+<td><strong>Cloudflare</strong></td>
+<td>Hosts the PilotCommute AeroAPI relay Worker</td>
+</tr>
+<tr>
+<td><strong>NOAA / aviationweather.gov</strong></td>
+<td>METAR/TAF weather</td>
+</tr>
+<tr>
+<td><strong>Apple</strong></td>
+<td>iOS, AlarmKit, EventKit, optional Maps; App Store</td>
+</tr>
+<tr>
+<td><strong>Grok Bot</strong> — an email inbox provided by Grok Bot operating <strong>mail.grokbot.com</strong></td>
+<td>Hosts the bug inbox <code>pilotcommute-bugs@mail.grokbot.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>Their own privacy policies and terms also apply to data they process.</p>
+<hr>
+<h2>7. Children</h2>
+<p>PilotCommute is intended for working airline pilots, not for children under 13. We do not knowingly collect personal information from children.</p>
+<hr>
+<h2>8. CCPA / CPRA (California)</h2>
+<p>If you are a California resident, you may have rights to know, delete, and correct personal information, and to opt out of “sale” or “sharing” (as defined by law). We do not sell personal information and do not share it for cross-context behavioral advertising. To exercise rights, email <strong>pilotcommute-bugs@mail.grokbot.com</strong>.</p>
+<hr>
+<h2>9. GDPR / international</h2>
+<p>If you are in the EEA/UK, lawful basis, DPIA, and representative questions apply before targeting those regions. Launch plan may geo-limit. Contact: <strong>pilotcommute-bugs@mail.grokbot.com</strong>.</p>
+<hr>
+<h2>10. Changes</h2>
+<p>We may update this policy. The effective date will change. Material changes will be noted in the app or on this page. Re-acceptance of the in-app disclaimer may be required if that text changes.</p>
+<hr>
+<h2>11. Contact</h2>
+<p><strong>Tyler W</strong> · PilotCommute<br>
+Email: <strong>pilotcommute-bugs@mail.grokbot.com</strong><br>
+Support page: https://pilotcommute-privacy.pages.dev<br>
+Privacy page: https://pilotcommute-privacy.pages.dev</p>
+<hr>
+</body>
+</html>
