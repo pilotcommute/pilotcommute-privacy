@@ -116,8 +116,9 @@ code { font-size: 0.95em; }
 </tbody>
 </table>
 <p><strong>Not sent in normal use:</strong> airline passwords or portal credentials; raw pasted schedule text; calendar note text beyond derived legs/report time; hotel rewards numbers; CASS/KCM data; employee ID.</p>
-<p><strong>FlightAware path (code-checked 2026-10-27):</strong> the Cloudflare relay allow-lists only <code>GET /schedules/{start}/{end}?origin&amp;destination…</code> and <code>GET /flights/{ident}</code> (<code>relay/src/index.ts</code>). That matches sending <strong>dates</strong>, <strong>airport codes</strong>, and <strong>flight numbers/idents</strong>. The FlightAware API key stays on the Worker, not on public devices.</p>
+<p><strong>FlightAware path:</strong> PilotCommute's relay sends FlightAware only the <strong>dates</strong>, <strong>airport codes</strong>, and <strong>flight numbers/idents</strong> needed for schedule and flight lookups. The FlightAware API key stays on PilotCommute's server, not on your iPhone.</p>
 <p>Weather label shown in-app: <em>Source: NOAA Aviation Weather Center (aviationweather.gov). For general awareness only. Not an official weather briefing. Use official sources for flight planning.</em></p>
+<p>PilotCommute can mark a specific install for a higher daily lookup limit. To do that, the app shows a short device code in Settings, made from the random install ID. If an install is marked, its code is kept on PilotCommute's server until it's removed. It isn't linked to your name or Apple ID.</p>
 <hr>
 <h2>4. How we use information</h2>
 <ul>
@@ -143,11 +144,15 @@ code { font-size: 0.95em; }
 </tr>
 <tr>
 <td>Bug-report email</td>
-<td>Used only to fix bugs; not shared outside the PilotCommute team; <strong>deleted within 90 days</strong> of receipt (Tyler W decision, 2026-10-27). Someone on the team must actually delete them.</td>
+<td>Used only to fix bugs; not shared outside the PilotCommute team; <strong>deleted within 90 days</strong> of receipt.</td>
 </tr>
 <tr>
 <td>Relay rate-limit counters</td>
-<td>Hashed install ID counts only; wiped when the UTC day rolls over (relay design)</td>
+<td>Hashed install ID counts only; wiped when the UTC day rolls over</td>
+</tr>
+<tr>
+<td>Higher-limit device codes</td>
+<td>Kept on PilotCommute's server only for installs marked for a higher daily lookup limit, until removed</td>
 </tr>
 <tr>
 <td>FlightAware / NOAA</td>
