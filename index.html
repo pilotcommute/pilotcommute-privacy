@@ -91,8 +91,8 @@ code { font-size: 0.95em; }
 <tbody>
 <tr>
 <td>Suggest commute flights / flight status</td>
-<td>Flight number or ident; origin and destination <strong>airport codes</strong>; <strong>date/time window</strong> for schedules; plus a random install ID and, in some builds, an app token to the relay (rate limits only)</td>
-<td><strong>Cloudflare</strong> (Worker infrastructure for PilotCommute’s relay) → <strong>FlightAware</strong> (AeroAPI)</td>
+<td>Flight number or ident; origin and destination <strong>airport codes</strong>; <strong>date/time window</strong> for schedules; plus a <strong>device code</strong> (short code from a random install ID) and an <strong>App Attest key ID</strong> to the relay, used to check the app is genuine and apply daily limits. No advertising identifier.</td>
+<td><strong>Cloudflare</strong> (Worker infrastructure for PilotCommute’s relay); <strong>Apple</strong> (App Attest / DeviceCheck); then <strong>FlightAware</strong> (AeroAPI)</td>
 <td>App functionality</td>
 </tr>
 <tr>
@@ -103,9 +103,9 @@ code { font-size: 0.95em; }
 </tr>
 <tr>
 <td>You send a bug report</td>
-<td>Your <strong>email address</strong> (Mail app) and the content you send: message, app build, iOS version, iPhone model, error logs; and <strong>only if you tick</strong> “Include trip details”, also time zone, settings, and trips/flights/alarm times for your next trips</td>
+<td>Your <strong>email address</strong> (Mail app) and the content you send: message, app build, iOS version, iPhone model, device code, error logs; and <strong>only if you tick</strong> “Include trip details”, also time zone, settings, and trips/flights/alarm times for your next trips</td>
 <td>PilotCommute at <strong>pilotcommute-bugs@mail.grokbot.com</strong>, an email inbox provided by Grok Bot on <strong>mail.grokbot.com</strong></td>
-<td>Fix bugs only</td>
+<td>Fix bugs, and to mark your install for a higher daily lookup limit if needed</td>
 </tr>
 <tr>
 <td>You tap an Apple Maps estimate (if that feature ships)</td>
@@ -144,11 +144,11 @@ code { font-size: 0.95em; }
 </tr>
 <tr>
 <td>Bug-report email</td>
-<td>Used only to fix bugs; not shared outside the PilotCommute team; <strong>deleted within 90 days</strong> of receipt.</td>
+<td>Used only to fix bugs or set a higher lookup limit; not shared outside the PilotCommute team; <strong>deleted within 90 days</strong> of receipt.</td>
 </tr>
 <tr>
-<td>Relay rate-limit counters</td>
-<td>Hashed install ID counts only; wiped when the UTC day rolls over</td>
+<td>Relay records</td>
+<td>Device codes, App Attest key IDs and public keys: deleted after 30 days (enforced in the relay). Daily lookup counts: wiped each UTC day. Used for rate limits and to check the app is genuine. No IDFV is collected.</td>
 </tr>
 <tr>
 <td>Higher-limit device codes</td>
